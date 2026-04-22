@@ -35,7 +35,10 @@ async def foo(c, m, cb=False):
 
     if not await db.is_user_exist(chat_id):
         await db.add_user(chat_id)
-        await c.send_message(Config.LOG_CHANNEL, f"New User {m.from_user.mention}.")
+        try:
+            await c.send_message(Config.LOG_CHANNEL, f"New User {m.from_user.mention}.")
+        except Exception as e:
+            print(f"Cannot send to LOG_CHANNEL: {e}")
 
     ban_status = await db.get_ban_status(chat_id)
     if ban_status["is_banned"]:
