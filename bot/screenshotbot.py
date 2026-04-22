@@ -71,7 +71,7 @@ class ScreenShotBot(Client):
                 reply_message = await self.send_message(
                     chat_id=admin_id,
                     text="Broadcast started. Use the buttons to check the progress or to cancel the broadcast.",
-                    reply_to_message_id=broadcast_message.message_id,
+                    reply_to_message_id=broadcast_message.id,
                     reply_markup=InlineKeyboardMarkup(
                         [
                             InlineKeyboardButton(
