@@ -30,7 +30,7 @@ class MediaInfoProcess(BaseProcess):
         await self.set_media_message()
         await self.input_message.edit_message_text(ms.PROCESSING_REQUEST)
         try:
-            if self.media_message.empty:
+            if self.media_message is None or getattr(self.media_message, 'empty', False) or getattr(self.media_message, 'date', None) is None:
                 raise MediaInfoProcessFailure(
                     for_user=ms.MEDIA_MESSAGE_DELETED,
                     for_admin=ms.MEDIA_MESSAGE_DELETED,
