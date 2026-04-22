@@ -74,7 +74,7 @@ class Utilities:
 
     @staticmethod
     def generate_stream_link(media_msg):
-        file_id = media_msg.message_id
+        file_id = media_msg.id
         chat_id = media_msg.chat.id
         return urljoin(Config.HOST, f"file/{chat_id}/{file_id}")
 
@@ -199,8 +199,6 @@ class Utilities:
         x_fact = 2
         x_pad = round((width * x_fact) / 100)
         y_pad = round((x_pad * a_ratio[1]) / a_ratio[0])
-
-        # https://superuser.com/questions/939357/how-to-position-drawtext-text
 
         if pos == 0:
             return x_pad, y_pad  # top left
